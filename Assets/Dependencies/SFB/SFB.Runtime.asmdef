@@ -1,10 +1,6 @@
 {
-    "name": "ArcadeUtils",
-    "rootNamespace": "Arcade.Utils",
-    "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:937297a2f463e45a1b06bc04b796e631"
-    ],
+    "name": "SFB.Runtime",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
