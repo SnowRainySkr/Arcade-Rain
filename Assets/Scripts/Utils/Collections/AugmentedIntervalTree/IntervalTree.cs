@@ -57,7 +57,7 @@ namespace Arcade.Utils.Collections.AugmentedIntervalTree {
 		/// </summary>
 		private IntervalTree() => SyncRoot = new();
 
-		public IntervalTree([NotNull] List<TInterval> sorted, [NotNull] IIntervalSelector<TInterval, TPoint> selector) 
+		public IntervalTree([NotNull] List<TInterval> sorted, [NotNull] IIntervalSelector<TInterval, TPoint> selector)
 			: this(selector) {
 			_root = GetSubTree(0, sorted.Count - 1);
 			return;
@@ -77,7 +77,7 @@ namespace Arcade.Utils.Collections.AugmentedIntervalTree {
 			}
 		}
 
-		public IntervalTree([NotNull] IIntervalSelector<TInterval, TPoint> intervalSelector) : this() {
+		private IntervalTree([NotNull] IIntervalSelector<TInterval, TPoint> intervalSelector) : this() {
 			_intervalSelector = intervalSelector;
 		}
 
@@ -86,8 +86,10 @@ namespace Arcade.Utils.Collections.AugmentedIntervalTree {
 		/// </summary>
 		public TPoint MaxEndPoint {
 			get {
-				if (_root == null)
+				if (_root == null) {
 					throw new InvalidOperationException("Cannot determine max end point for empty interval tree");
+				}
+
 				return _root.MaxEndPoint;
 			}
 		}
@@ -129,7 +131,7 @@ namespace Arcade.Utils.Collections.AugmentedIntervalTree {
 		/// </summary>
 		/// <param name="item">The item to check</param>
 		/// <returns>
-		/// True iff the item exists in the collection. 
+		/// True if the item exists in the collection. 
 		/// </returns>
 		/// <remarks>
 		/// This method uses the collection’s objects’ Equals and CompareTo methods on item to determine whether item exists.
